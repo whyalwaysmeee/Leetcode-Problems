@@ -1,0 +1,19 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        if not strs: return ""
+        s1 = min(strs)
+        s2 = max(strs)
+        """enumerate函数生成一个enumerate数据结构，例如：
+        0 f
+        1 l
+        2 o
+        3 w
+        """
+        for i,x in enumerate(s1):
+            if x != s2[i]:
+                return s2[:i]
+        return s1
+if __name__ == "__main__":
+    y = Solution()
+    u = y.longestCommonPrefix(["flower","flow","flight"])
+    print(u)
