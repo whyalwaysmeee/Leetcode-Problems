@@ -1,5 +1,6 @@
 class Solution(object):
     def longestCommonPrefix(self, strs)：
+        #主要思想是比较每一个单词的相同位置上的字母
         p = ""
         """zip函数生成一个zip数据结构，行数为最短字符串长度，例如：
         ('f', 'f', 'f')
