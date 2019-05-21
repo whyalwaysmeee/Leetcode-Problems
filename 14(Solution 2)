@@ -1,4 +1,5 @@
 class Solution(object):
+    #主要利用了python中字符串大小可以比较，最大字符串和最小字符串的公共前缀，一定就是整个的公共前缀
     def longestCommonPrefix(self, strs):
         if not strs: return ""
         s1 = min(strs)
