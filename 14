@@ -1,0 +1,29 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs)：
+        p = ""
+        """zip函数生成一个zip数据结构，行数为最短字符串长度，例如：
+        ('f', 'f', 'f')
+        ('l', 'l', 'l')
+        ('i', 'o', 'o')
+        ('g', 'w', 'u')
+        ('h', 'e', 'r')
+        """
+        a = zip(*strs)   
+        for i in a:
+        """set函数生成一个set数据结构，并筛选出每一行中唯一的字符，例如：
+        {'f'}
+        {'l'}
+        {'i', 'o'}
+        {'g', 'w', 'u'}
+        {'r', 'h', 'e'}
+        """
+            c = set(i)
+            if len(c) == 1:
+                p = p + i[0]
+            else:
+                break
+        return p
+if __name__ == "__main__":
+    y = Solution()
+    u = y.longestCommonPrefix(["flower","flow","flight"])
+    print(u)
