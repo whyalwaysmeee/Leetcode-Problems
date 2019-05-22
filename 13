@@ -1,6 +1,6 @@
 class Solution(object):
     def romanToInt(self,s):
-    """思路：前一字符表示的数字小于后一字符则减去，大于则加上"""
+    """思路：前一字符表示的数字小于后一字符则减去，大于等于则加上"""
         t = 0
         dic = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
         for i in range(len(s)):
