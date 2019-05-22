@@ -1,0 +1,15 @@
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        if needle == "":
+            return 0
+        elif (needle in haystack)== False:
+            return -1
+        else:
+            return haystack.index(needle)
+test = Solution()
+result = test.strStr("hello","ll")
