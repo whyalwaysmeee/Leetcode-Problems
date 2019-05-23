@@ -1,0 +1,41 @@
+class Solution(object):
+    def strStr(self, string, substring):
+    """构建pnext数组"""
+        m = len(substring)
+        pnext = [0] * m
+        index = 0
+        i = 1
+        while i < m:
+                if substring[i] == substring[index]:   #如果后缀与前缀有一位相同，继续往后延伸，尝试找出相同的最大长度index
+                    pnext[i] = index + 1
+                    index = index + 1
+                    i = i + 1
+                elif index != 0:                     #已经找出一个可能是前缀和后缀最大的相同长度，此时index一定大于0，再继续往下找
+                    index = pnext[index - 1]
+                else:                              #如果前缀与后缀的第一位不相同，此时index一定等于0，则移动i指针继续向后找
+                    pnext[i] = 0
+                    i = i + 1
+        """利用pnext数组进行字符串匹配，大大提高效率"""            
+        m = len(string)
+        n = len(substring)
+        i = 0
+        j = 0
+        while (i < m) and (j < n):
+            if (substring[j] == string[i]):   #如果第一位相同，则往后比较第二位、第三位......
+                i = i + 1
+                j = j + 1
+            elif j != 0:                      #直到某一位不相同了，利用pnext数组定位substring中j指针的位置
+                j = pnext[j-1]
+            else:                            #如果一开始就不相同，则往后移动string中的i指针
+                i = i + 1
+        if j == n:
+            return i-j
+        else:
+            return -1
+        
+          
+
+if __name__ == "__main__":
+    test = Solution()
+    p = test.strStr("hello","ll")
+    print(p)
