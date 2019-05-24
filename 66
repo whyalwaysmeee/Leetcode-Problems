@@ -5,14 +5,14 @@ class Solution(object):
         :rtype: List[int]
         """
         for i in range(len(digits)):
-            if digits[-1 - i] == 9:
-                digits[-1 - i] = 0
-                if -1-i == -len(digits):
-                    digits[-1 - i] = 1
+            if digits[-1 - i] == 9:      #若倒数第（1+i）位是9，则置0
+                digits[-1 - i] = 0           
+                if -1-i == -len(digits):            #若还没遍历到首位，则进入下一个循环
+                    digits[-1 - i] = 1            #若遍历到首位且首位是9，则置1，并在末尾添一个0
                     digits.append(0)
                     return digits
             else:
-                digits[-1 - i] += 1
+                digits[-1 - i] += 1            #若倒数第（1+i）位不是9，则直接+1然后输出结果
                 return digits
 test = Solution()
 result = test.plusOne([1,3,4])
