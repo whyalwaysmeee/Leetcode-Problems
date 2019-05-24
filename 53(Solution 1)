@@ -1,0 +1,31 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        主要思想是分治。最长子序列要么存在于左子列，要么存在于右子列，要么存在于一个贯穿左、右子列的子列中
+        """
+        if len(nums) == 1:
+            return nums[0]
+        else:
+            max_left = maxSubArray(nums[0:len(nums)//2])   #左子列
+            max_right = maxSubArray(nums[len(nums)//2:len(nums)])  #右子列
+            
+        """
+        贯穿左、右子列，则必然包含中间项，故从中间项开始向左、右延伸查找最长子序列，最后合并即为结果
+        """
+        max_midl = 0
+        templ = 0
+        m = len(nums)//2 - 1
+        for i in range(m,-1,-1):
+            templ = templ + nums[i]
+            max_midl = max(max_midl,templ)
+            
+        max_midr = 0
+        tempr = 0
+        for i in range(m+1,len(nums)):
+            tempr = tempr + nums[i]
+            max_midr = max(max_midr,tempr)
+            
+        return max(max_left,max_right, max_midl+max_midr)
+    
+test = Solution()
+result = test.maxSubArray([1,2,3,4,-1])
