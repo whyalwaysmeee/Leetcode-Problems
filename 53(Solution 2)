@@ -1,0 +1,18 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        主要思想是动态规划。从第一项开始累加，若累加结果为正则继续，为负则清零并从当前项开始重新累加，因为最长子序列必不包含累加结果为负的子序列。
+        """
+
+        sum = 0
+        max_sub_sum = nums[0]
+        for num in nums:
+            sum += num
+            if sum > max_sub_sum:
+                max_sub_sum = sum
+            if sum < 0:
+                sum = 0
+        return max_sub_sum
+    
+test = Solution()
+result = test.maxSubArray([1,2,3,4,-1])
