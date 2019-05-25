@@ -3,7 +3,7 @@ class Solution(object):
     """构建pnext数组"""
         m = len(substring)
         pnext = [0] * m
-        index = 0
+        index = 0        #即前缀与后缀相同部分的长度
         i = 1
         while i < m:
                 if substring[i] == substring[index]:   #如果后缀与前缀有一位相同，继续往后延伸，尝试找出相同的最大长度index
