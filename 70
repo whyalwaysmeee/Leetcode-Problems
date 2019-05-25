@@ -1,0 +1,21 @@
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        动态规划。n级台阶的走法 = (n-1)级台阶的走法 + (n-2)级台阶的走法
+        """
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+        else:
+            dp = [0] * (n+1)   #(n+1)的原因是数组内存在0级台阶的情况
+            for i in range(n+1):
+                if i > 2:
+                    dp[i] = dp[i-1] + dp[i-2]
+                else:
+                    dp[i] = i
+            return dp[-1]
+            
+a = Solution()
+result = a.climbStairs(9)
+print(result)
