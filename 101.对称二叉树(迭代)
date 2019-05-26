@@ -1,8 +1,7 @@
 class Solution(object):
     def isSymmetric(self, root):
         """
-        :type root: TreeNode
-        :rtype: bool
+        主要思想是层序遍历。判断每一层是否是回文。
         """
         
         queue = [root]
