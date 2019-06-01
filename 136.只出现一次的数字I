@@ -6,5 +6,5 @@ class Solution(object):
         """
         a = 0
         for i in nums:
-            a = a ^ i
+            a = a ^ i            #使用异或。0异或n为n，m连续异或两个n为m
         return a
