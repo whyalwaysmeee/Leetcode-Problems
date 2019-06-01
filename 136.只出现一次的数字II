@@ -1,0 +1,15 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        a = sorted(nums)
+        i = 0
+        while i < len(a)-2:
+            if a[i] == a[i+1]:
+                i = i + 2
+            else:
+                return a[i]
+                break
+        return a[i]
