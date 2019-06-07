@@ -8,8 +8,8 @@ class Solution(object):
         answer = []
         for left_index in range(len(nums)):
             right = target - nums[left_index]
-            if right in nums[left_index+1:]:
-                nums_right = nums[left_index+1:]
+            if right in nums[left_index+1:]:            #将数组分成前后两部分可避免数组中含有重复元素而造成的结果错误
+                nums_right = nums[left_index+1:]              #譬如输入为[3,3]时若直接在原数组上使用index索引，返回结果会是[0,0]而非正确的[0,1]
                 right_index = nums_right.index(right)+left_index+1
                 answer.extend([left_index, right_index])
                 break
