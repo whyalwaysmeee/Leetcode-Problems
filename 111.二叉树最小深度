@@ -14,7 +14,7 @@ class Solution(object):
         if root is not None:
              if root.left is not None and root.right is not None:
                 return min(self.minDepth(root.right),self.minDepth(root.left))+1
-             elif root.left is not None and root.right is None:
+             elif root.left is not None and root.right is None:    #存在左子树表示该root不是叶子节点，所以必须向下计算其左子树的最小深度
                 return self.minDepth(root.left)+1
              elif root.right is not None and root.left is None:
                 return self.minDepth(root.right)+1
