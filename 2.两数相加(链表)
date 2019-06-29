@@ -1,0 +1,37 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        head = ListNode(1)                #设立一个头指针，后面循环的时候我们会移动尾指针，但最后结果需要输出链表头
+        res = head                        #尾指针
+        jinwei = 0                        #设置进位
+        while l1 is not None or l2 is not None:                    #遍历会持续到两个链表的末尾
+            if l1 is not None:
+                x = l1.val
+            else:
+                x = 0
+            if l2 is not None:
+                y = l2.val
+            else:
+                y = 0
+            he = jinwei + x + y                                   #相同位置上数字之和加上进位
+            jinwei = he // 10                                     #更新进位，只会是1或0
+            xiayiwei = he % 10                                    #计算下一位
+            res.next = ListNode(xiayiwei)                        
+            res = res.next
+            if l1 is not None:                                    
+                l1 = l1.next
+            if l2 is not None:
+                l2 = l2.next
+        if jinwei == 1:                                   #加到最后如果还需要进位，则在新链表末尾再添一位，值为1
+            res.next = ListNode(1)
+        return head.next                                  #头指针的下一位，即为新链表的头
