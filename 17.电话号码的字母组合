@@ -14,5 +14,5 @@ class Solution(object):
             for j in dic[i]:
                 for k in res:
                     next_res.append(k+j)
-            res = next_res
+            res = next_res                           #res用于记录上一个数字所代表的所有可能字母，将在下一次循环中被使用
         return res
