@@ -1,0 +1,30 @@
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 0:
+            return -1
+        left = 0
+        right = n - 1
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[left] <= nums[mid]:          #鉴于数组的排序性质，如果最左元素不大于中间元素，那么左半部分数组一定是排序数组，右半部分数组
+                                                   #是一个更小的、和原来数组具有相同排序性质的数组，然后再分别对两部分数组使用二分查找
+                if nums[left] <= target < nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            else:                                        #同理，如果最左元素大于中间元素，那么右半部分数组一定是排序数组，左半部分数组是一个更小
+                                                         #的类似数组
+                if nums[mid] < target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+       
+        return left if nums[left] == target else -1
