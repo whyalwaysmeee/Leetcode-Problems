@@ -1,0 +1,21 @@
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        res = []
+        def restore(tgt, s):
+            if tgt == 0:
+                s.sort()
+                if s and not s in res: res.append(s)
+            
+            for num in candidates:
+                if num > tgt:
+                    pass
+                else:
+                    restore(tgt-num, s+[num])
+                    
+        restore(target, [])
+        return res
