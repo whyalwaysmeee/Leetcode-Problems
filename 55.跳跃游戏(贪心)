@@ -6,10 +6,10 @@ class Solution(object):
         """
         if not nums: return False
         if nums[0]== '0': return False
-        maxlen = 0
+        maxlen = 0                                    
         for i in range(len(nums)):
-            if maxlen < i:
+            if maxlen < i:                                 #如果在i位置能跳到的最大位置都小于i+1，那么就不可以
                 return False
             else:
-                maxlen = max(maxlen,i+nums[i])
+                maxlen = max(maxlen,i+nums[i])              #记录在该位置i所能跳到的最大位置
         return True
